@@ -1,35 +1,48 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import {  Grid, GridItem } from "@chakra-ui/react";
+import NavBar from "./components/NavBar";
+import { useColorModeValue } from "./components/ui/color-mode";
+import GameGrid from "./components/GameGrid";
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  const navBg = useColorModeValue("blue.50", "blue.900");
+  const asideBg = useColorModeValue("yellow.50", "yellow.900");
+  const mainBg = useColorModeValue("blue.100", "blue.800");
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    
+    <Grid
+    
+      templateAreas={{
+        base: `"nav" "main"`,
+        lg: `"nav nav" "aside main"`,
+      }}
+      templateColumns={{
+        base: "1fr",
+        lg: "200px 1fr",
+      }}
+      gap={4}
+      p={4}
+      bg={navBg}
+  
+    >
+      <GridItem area="nav" bg="coral" p={4} >
+        <NavBar/> 
+      </GridItem>
+     
+      <GridItem
+        area="aside"
+        bg="gold"
+        p={4}
+        display={{ base: "none", lg: "block" }}
+      >
+        Aside
+      </GridItem>
+     
+
+      <GridItem area="main"  p={4}>
+        <GameGrid />
+      </GridItem>
+    </Grid>
+  );
 }
 
-export default App
+export default App;
