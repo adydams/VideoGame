@@ -1,4 +1,4 @@
-import {  Grid, GridItem } from "@chakra-ui/react";
+import { Grid, GridItem } from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
 import { useColorModeValue } from "./components/ui/color-mode";
 import GameGrid from "./components/GameGrid";
@@ -8,9 +8,7 @@ function App() {
   const asideBg = useColorModeValue("yellow.50", "yellow.900");
   const mainBg = useColorModeValue("blue.100", "blue.800");
   return (
-    
     <Grid
-    
       templateAreas={{
         base: `"nav" "main"`,
         lg: `"nav nav" "aside main"`,
@@ -22,12 +20,11 @@ function App() {
       gap={4}
       p={4}
       bg={navBg}
-  
     >
-      <GridItem area="nav" bg="coral" p={4} >
-        <NavBar/> 
+      <GridItem area="nav" bg="coral" p={4}>
+        <NavBar />
       </GridItem>
-     
+
       <GridItem
         area="aside"
         bg="gold"
@@ -36,9 +33,8 @@ function App() {
       >
         Aside
       </GridItem>
-     
 
-      <GridItem area="main"  p={4}>
+      <GridItem area="main" p={4}>
         <GameGrid />
       </GridItem>
     </Grid>

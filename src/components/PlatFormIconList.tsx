@@ -6,8 +6,7 @@ import {
    FaPlaystation, 
    FaBox, 
    FaApple, 
-   FaLinux, 
-   FaAndroid
+   FaLinux
    } from 'react-icons/fa'
 import { MdPhoneIphone } from 'react-icons/md'
 import { SiNintendo } from 'react-icons/si'
@@ -29,7 +28,7 @@ const PlatFormIconList = ({platforms}: Props) => {
         web: BsGlobe
     }
   return (
-    <HStack marginY="10px">
+    <HStack>
     {platforms.map((platform) => {
       const IconComponent = iconMap[platform.slug];
       if (!IconComponent) return null;
@@ -37,9 +36,9 @@ const PlatFormIconList = ({platforms}: Props) => {
       return (
         <Icon
           as={IconComponent}
-          key={platform.id || platform.slug}         
-          boxSize={6}
-         
+          key={platform.id || platform.slug}
+          boxSize={5}
+          color="gray.700"
         />
       );
     })}

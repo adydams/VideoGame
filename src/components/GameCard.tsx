@@ -1,8 +1,9 @@
 import React from "react";
 
 import { Game } from "../components/GameGrid";
-import { Heading, Card, Avatar, VStack } from "@chakra-ui/react";
+import { Heading, Card, Avatar, VStack, HStack, Spacer } from "@chakra-ui/react";
 import PlatFormIconList from "./PlatFormIconList";
+import CriticScore from "./CriticScore";
 
 interface Props {
   game: Game;
@@ -23,15 +24,16 @@ const GameCard = ({ game }: Props) => {
       <Card.Footer>
         {/* <Button variant="outline">View</Button>
         <Button>Join</Button> */}
-        <VStack gap="5" align="left">
-          <Card.Description>
-            <Heading textStyle="3xl">
+        <VStack gap="5" align="left" width="100%">
+           <Heading textStyle="3xl"  >
               {game.name}
             </Heading>
-          </Card.Description>
+         <HStack justifyContent="space-between" >
           <PlatFormIconList
             platforms={game.parent_platforms.map((p) => p.platform)}
           />
+          <CriticScore score={game.metacritic}/>
+          </HStack>
           {/* <Heading textStyle="sm">{game.name}</Heading> */}
         </VStack>
       </Card.Footer>
